@@ -1,0 +1,109 @@
+/*
+Theme Name: Make Child
+Theme URI: https://thethemefoundry.com/make/
+Template: make
+Author: The Theme Foundry
+Author URI: https://thethemefoundry.com
+Description: Build a website that means business. With Make’s powerful drag and drop page builder and hundreds of Customizer options, you can effortlessly brand your site without touching a line of code. Add full-width banners, columns, and galleries to showcase your best work. The intuitive builder delivers clean, lean code — not shortcodes — so you can trust your content remains portable. Make lets you control page layout options, including sidebar display, on all your posts and pages. Choose from hundreds of Google Fonts and upload custom backgrounds everywhere. Built on a fully responsive grid, Make renders as beautifully on tablets and phone screens as it does on desktop. Make scales with your business and is fully compatible with popular plugins like WooCommerce, Gravity Forms, Contact Form 7, Jetpack, and others. For documentation on the page builder and getting started with Make, see: https://thethemefoundry.com/make-help/
+Tags: one-column,two-columns,three-columns,four-columns,left-sidebar,right-sidebar,grid-layout,buddypress,custom-background,custom-colors,custom-header,custom-menu,editor-style,featured-images,flexible-header,full-width-template,sticky-post,theme-options,threaded-comments,translation-ready,footer-widgets,blog,e-commerce,education,entertainment,food-and-drink,holiday,news,photography,portfolio
+Version: 1.8.10.1503485370
+Updated: 2017-08-23 13:49:30
+Page ID's: About-us:2, Home:156, Gallery:162 , Travel-stories:164, The-route:19, 
+
+   -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+   -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: black
+*/
+
+.builder-banner-inner-content {
+    padding-top: 0 !important;
+    padding-right: 32px !important;
+    padding-right: 3.2rem !important;
+    padding-bottom: 0 !important;
+    padding-left: 32px !important;
+    padding-left: 3.2rem !important;
+}
+
+/*applies background images to specific pages*/
+.page-id-19 .site-header-main { background-color: #000000; 	background-image: url(http://themicradiaries.tk/wp-content/uploads/2017/08/compass-and-map.jpg); background-repeat: no-repeat; background-position: center;
+    background-attachment: fixed; background-size: cover; padding: 1.5rem 0 55.0rem !important  }
+
+.page-id-2 .site-header-main { background-color: #000000; 	background-image: url(http://themicradiaries.tk/wp-content/uploads/2018/01/DSC02323.jpg); background-repeat: no-repeat;
+	background-position: right; background-attachment: fixed; background-size: cover; padding: 1.5rem 0 55.0rem !important  }
+
+.page-id-162 .site-header-main { background-color: #000000; 	background-image: url(http://themicradiaries.tk/wp-content/uploads/2018/01/DSC01045.jpg); background-repeat: no-repeat; background-position: center;
+    background-attachment: fixed; background-size: cover; padding: 1.5rem 0 55.0rem !important }
+
+.page-id-1780 .site-header-main { background-color: #000000; 	background-image: url(http://themicradiaries.tk/wp-content/uploads/2018/01/DSC00929.jpg); background-repeat: no-repeat; background-position: center;
+    background-attachment: fixed; background-size: cover; padding: 1.5rem 0 55.0rem !important }
+
+
+/*blancks out site-title and site-description on all pages bar home page*/
+.site-title { display: none }
+.page-id-156 .site-title { display: block !important }
+ 
+
+.site-description { display: none }
+.page-id-156 .site-description { display: block !important }
+
+.page-id-156 .site-header-main { background-image: url(http://themicradiaries.tk/wp-content/uploads/2018/01/DSC00241.jpg); background-repeat: no-repeat; background-position: center;
+    background-attachment: fixed; background-size: cover; padding: 10.5rem 0 50.0rem !important }
+
+.site-header-main { background-color: #FFFFFF; border: 5px solid #0000 }
+
+.site-content { margin-top: -3.75rem; margin-bottom: -3.75rem }
+
+
+/***********Text overlay************/
+.outer-wrapper { position: relative } 
+
+.text-wrapper {
+	color: white;
+	font-size: 45px;
+	font-weight: bold;
+	position: absolute;
+	vertical-align: bottom;
+	padding: 40px 80px;	
+	top: 25px;
+	left: 22px;
+}
+	
+.about_bebo_image {
+	background-color: rgba(255, 255, 255, 0.65);
+	line-height: 1.6;
+	border-radius: 25px;
+	}
+
+.about_mike_image {
+	background-color: rgba(255, 255, 255, 0.65);
+	line-height: 1.6;
+	border-radius: 25px;
+	}
+
+/***********Photography main page tile settings************/
+.page-id-162 .country_tile {
+	height: 400px;
+	padding: 40px 60px;		
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.page-id-162 .bckgrnd_photo {
+	padding: 3px 3px;
+}
+
+.bckgrnd_photo:hover{
+ cursor:pointer;
+}
+
+/********READ ME******/
+/* Photography main page, instructions for adding new tiles for new countries: 
+ 1. Navigate to Tools > Scripts n Styles. Delete the 6 lines of Javascript. This script prevents Beaver Page Builder from operating properly.
+ 2. Navigate to Photography page, start page builder. Add 2 columns underneath all other tiles.
+ 3. Add image by clicking either new column, select background to be image. Chnage CSS class to country_tile
+ 4. Add new text box in column with image. Type name of country in text, change CSS class to bckgrnd_photo
+ 5. Add following HTML in same text box as country name: <a href="XXXXX" target="_blank"></a>   XXXX = url of country photo page.
+ 6. Reverse step 1. */
