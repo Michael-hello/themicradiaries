@@ -20,7 +20,7 @@ bn_<?php
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'bitnami_wordpress');
+define('DB_NAME', 'mikeuk91_wp1');
 
 /** MySQL database username */
 define('DB_USER', 'bn_wordpress');
