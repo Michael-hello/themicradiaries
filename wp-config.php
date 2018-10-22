@@ -88,11 +88,13 @@ $table_prefix  = 'wp_';
  * visit the Codex.
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
- */
+ 
 error_reporting(E_ALL); ini_set('display_errors', 1);
+*/
 
-define('WP_DEBUG', true);
-define( 'WP_MEMORY_LIMIT', '256M' );
+define('WP_DEBUG', false);
+
+// define( 'WP_MEMORY_LIMIT', '256M' );
 
 /* That's all, stop editing! Happy blogging. */
 
