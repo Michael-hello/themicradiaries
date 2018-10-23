@@ -59,7 +59,8 @@ define('NONCE_SALT',       'YyI658TUfw8i3kGFpiV1QFrqUw1FcN7cIBI7FyTWIQyjSlTHyAfH
  * Other customizations.
  */
 define('FS_METHOD','direct');define('FS_CHMOD_DIR',0755);define('FS_CHMOD_FILE',0644);
-define('WP_TEMP_DIR',dirname(__FILE__).'/wp-content/uploads');
+//define('WP_TEMP_DIR',dirname(__FILE__).'/wp-content/uploads');
+define('WP_TEMP_DIR', ABSPATH . 'wp-content/');
 
 /**
  * Turn off automatic updates since these are managed upstream.
