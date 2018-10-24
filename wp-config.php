@@ -23,13 +23,13 @@
 define('DB_NAME', 'mikeuk91_wp1');
 
 /** MySQL database username */
-define('DB_USER', 'bn_wordpress');
+define('DB_USER', 'wordpressuser');
 
 /** MySQL database password */
-define('DB_PASSWORD', '45bee7e8ac');
+define('DB_PASSWORD', 'hj97tkL3');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost:3306');
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -46,17 +46,45 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
+define('AUTH_KEY',         'QYLmuoyRKOCOBvWSzUrc1WyIFC7dsq265OBMkccq2p9jTSryTPTu8aXvcXHN46FM');
+define('SECURE_AUTH_KEY',  'cVQyO3XJk9Hd1YGo3g6R0UARtyze3NOlhunsttMVekcjzMDKjuER3H7gigsN3BiG');
+define('LOGGED_IN_KEY',    'CVMvBNuqe3AjkhTXQW7JbaRuFLJWIYDd1qjwQWvoLcuPwFEIz99YVLumnBDemWc6');
+define('NONCE_KEY',        'Faz6oVCMr39rTXAU8MYjDbqHBbmoflvrfjY0U7EfZK5IKUoVaeg6EsHGps5AwPX5');
+define('AUTH_SALT',        '1Q2yHiABA00iSnNp9ZXVIb4nF7swUxJpSEXmMUZvLrQInsCARSf9xIjM7R8F3pRn');
+define('SECURE_AUTH_SALT', 'HB0a7693LetoOj50T3A9YtrT9BkMvcGUoOJe4YNmuxt6yCg46Lz9LA3XiD1TBZpY');
+define('LOGGED_IN_SALT',   'NbW5WaYQjcXlwwTYwg7MeyCwWVhk4NNeNaWG8ZuZPRJXdtIag3SHn0l4uSG4gCNB');
+define('NONCE_SALT',       'YyI658TUfw8i3kGFpiV1QFrqUw1FcN7cIBI7FyTWIQyjSlTHyAfHXqlLBVshbfIx');
 
+/**
+ * Other customizations.
+ */
+define('FS_METHOD','direct');
+define('FS_CHMOD_DIR',0755);
+define('FS_CHMOD_FILE',0644);
+//define('WP_TEMP_DIR',dirname(__FILE__).'/wp-content/uploads');
 
+/**
+ * Turn off automatic updates since these are managed upstream.
+ */
+define('AUTOMATIC_UPDATER_DISABLED', true);
 
- define('AUTH_KEY', '42335bc92f916f6be71663319bc0429fb2b76a90d996322ea6558c238823f811');
-define('SECURE_AUTH_KEY', '19e3bf29085218365030cb13b82adda11cd0b778397ac04e6e66c7e130a570ad');
-define('LOGGED_IN_KEY', 'fa6cda1e708213b174f115318345bb2b9ee1ef9cb372573b3dc52d1f0d8041d6');
-define('NONCE_KEY', '8c1f7be21ca65abacba311c3b055d166cc8a4f093dfc93092bc9ef1f07eabe21');
-define('AUTH_SALT', '2d3fd6adb9fc251191ef3251c7dc7f7cbf41cf52bc016f65495837a59ab85fe9');
-define('SECURE_AUTH_SALT', '14ce39a6ee41068334d28cc0d49131f6c9a3d0b487cdfbb629c9626333d1ac23');
-define('LOGGED_IN_SALT', 'c3617472ac1409d2ba40039267d572d8439a99a3ac8bbe3dba1fac91e257cf0c');
-define('NONCE_SALT', '9e57bc4207368b437670c5a9e6da41b70d12e90f24e45adb6d615cbea1662534');
+define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/');
+define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] . '/');
+define('WP_TEMP_DIR', '/opt/bitnami/apps/wordpress/tmp');
+if ( !defined( 'WP_CLI' ) ) {
+    // remove x-pingback HTTP header
+    add_filter('wp_headers', function($headers) {
+        unset($headers['X-Pingback']);
+        return $headers;
+    });
+    // disable pingbacks
+    add_filter( 'xmlrpc_methods', function( $methods ) {
+            unset( $methods['pingback.ping'] );
+            return $methods;
+    });
+    add_filter( 'auto_update_translation', '__return_false' );
+}
+
 
 /**#@-*/
 
@@ -84,134 +112,9 @@ define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */
 
-define('FS_METHOD', 'direct');
-
-/**
- * The WP_SITEURL and WP_HOME options are configured to access from any hostname or IP address.
- * If you want to access only from an specific domain, you can modify them. For example:
- *  define('WP_HOME','http://example.com');
- *  define('WP_SITEURL','http://example.com');
- *
-*/
-
-if ( defined( 'WP_CLI' ) ) {
-    $_SERVER['HTTP_HOST'] = 'localhost';
-}
-
-define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/');
-define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] . '/');
-
-
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
-
-define('WP_TEMP_DIR', '/opt/bitnami/apps/wordpress/tmp');
-
-
-//  Disable pingback.ping xmlrpc method to prevent Wordpress from participating in DDoS attacks
-//  More info at: https://docs.bitnami.com/?page=apps&name=wordpress&section=how-to-re-enable-the-xml-rpc-pingback-feature
-
-if ( !defined( 'WP_CLI' ) ) {
-    // remove x-pingback HTTP header
-    add_filter('wp_headers', function($headers) {
-        unset($headers['X-Pingback']);
-        return $headers;
-    });
-    // disable pingbacks
-    add_filter( 'xmlrpc_methods', function( $methods ) {
-            unset( $methods['pingback.ping'] );
-            return $methods;
-    });
-    add_filter( 'auto_update_translation', '__return_false' );
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
-define('AUTH_KEY',         'QYLmuoyRKOCOBvWSzUrc1WyIFC7dsq265OBMkccq2p9jTSryTPTu8aXvcXHN46FM');
-define('SECURE_AUTH_KEY',  'cVQyO3XJk9Hd1YGo3g6R0UARtyze3NOlhunsttMVekcjzMDKjuER3H7gigsN3BiG');
-define('LOGGED_IN_KEY',    'CVMvBNuqe3AjkhTXQW7JbaRuFLJWIYDd1qjwQWvoLcuPwFEIz99YVLumnBDemWc6');
-define('NONCE_KEY',        'Faz6oVCMr39rTXAU8MYjDbqHBbmoflvrfjY0U7EfZK5IKUoVaeg6EsHGps5AwPX5');
-define('AUTH_SALT',        '1Q2yHiABA00iSnNp9ZXVIb4nF7swUxJpSEXmMUZvLrQInsCARSf9xIjM7R8F3pRn');
-define('SECURE_AUTH_SALT', 'HB0a7693LetoOj50T3A9YtrT9BkMvcGUoOJe4YNmuxt6yCg46Lz9LA3XiD1TBZpY');
-define('LOGGED_IN_SALT',   'NbW5WaYQjcXlwwTYwg7MeyCwWVhk4NNeNaWG8ZuZPRJXdtIag3SHn0l4uSG4gCNB');
-define('NONCE_SALT',       'YyI658TUfw8i3kGFpiV1QFrqUw1FcN7cIBI7FyTWIQyjSlTHyAfHXqlLBVshbfIx');
-**/
-	/**
-	 * Other customizations.
-	 */
-	//define('FS_METHOD','direct');define('FS_CHMOD_DIR',0755);define('FS_CHMOD_FILE',0644);
-	//define('WP_TEMP_DIR',dirname(__FILE__).'/wp-content/uploads');
-	//define('WP_TEMP_DIR', ABSPATH . 'wp-content/');
-
-	/**
-	 * Turn off automatic updates since these are managed upstream.
-	 */
-	//define('AUTOMATIC_UPDATER_DISABLED', true);
-
-
-	/**#@-*/
-
-	/**
-	 * WordPress Database Table prefix.
-	 *
-	 * You can have multiple installations in one database if you give each
-	 * a unique prefix. Only numbers, letters, and underscores please!
-	 */
-	//$table_prefix  = 'wp_';
-
-	/**
-	 * For developers: WordPress debugging mode.
-	 *
-	 * Change this to true to enable the display of notices during development.
-	 * It is strongly recommended that plugin and theme developers use WP_DEBUG
-	 * in their development environments.
-	 *
-	 * For information on other constants that can be used for debugging,
-	 * visit the Codex.
-	 *
-	 * @link https://codex.wordpress.org/Debugging_in_WordPress
- 
-	error_reporting(E_ALL); ini_set('display_errors', 1);
-	*/
-
-	//define('WP_DEBUG', false);
-
-	// define( 'WP_MEMORY_LIMIT', '256M' );
-
-	/* That's all, stop editing! Happy blogging. */
-
-	/** Absolute path to the WordPress directory. */
-	//if ( !defined('ABSPATH') )
-	//	define('ABSPATH', dirname(__FILE__) . '/');
-
-	/** Sets up WordPress vars and included files. */
-	//require_once(ABSPATH . 'wp-settings.php');
-	
