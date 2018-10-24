@@ -26,13 +26,13 @@ define('DB_NAME', 'mikeuk91_wp1');
 define('DB_USER', 'wordpressuser');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'hj97tkL3');
+define('DB_PASSWORD', 'password');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+define('DB_CHARSET', 'utf8mb4');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
@@ -46,45 +46,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'QYLmuoyRKOCOBvWSzUrc1WyIFC7dsq265OBMkccq2p9jTSryTPTu8aXvcXHN46FM');
-define('SECURE_AUTH_KEY',  'cVQyO3XJk9Hd1YGo3g6R0UARtyze3NOlhunsttMVekcjzMDKjuER3H7gigsN3BiG');
-define('LOGGED_IN_KEY',    'CVMvBNuqe3AjkhTXQW7JbaRuFLJWIYDd1qjwQWvoLcuPwFEIz99YVLumnBDemWc6');
-define('NONCE_KEY',        'Faz6oVCMr39rTXAU8MYjDbqHBbmoflvrfjY0U7EfZK5IKUoVaeg6EsHGps5AwPX5');
-define('AUTH_SALT',        '1Q2yHiABA00iSnNp9ZXVIb4nF7swUxJpSEXmMUZvLrQInsCARSf9xIjM7R8F3pRn');
-define('SECURE_AUTH_SALT', 'HB0a7693LetoOj50T3A9YtrT9BkMvcGUoOJe4YNmuxt6yCg46Lz9LA3XiD1TBZpY');
-define('LOGGED_IN_SALT',   'NbW5WaYQjcXlwwTYwg7MeyCwWVhk4NNeNaWG8ZuZPRJXdtIag3SHn0l4uSG4gCNB');
-define('NONCE_SALT',       'YyI658TUfw8i3kGFpiV1QFrqUw1FcN7cIBI7FyTWIQyjSlTHyAfHXqlLBVshbfIx');
-
-/**
- * Other customizations.
- */
-define('FS_METHOD','direct');
-define('FS_CHMOD_DIR',0755);
-define('FS_CHMOD_FILE',0644);
-//define('WP_TEMP_DIR',dirname(__FILE__).'/wp-content/uploads');
-
-/**
- * Turn off automatic updates since these are managed upstream.
- */
-define('AUTOMATIC_UPDATER_DISABLED', true);
-
-define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/');
-define('WP_HOME', 'http://' . $_SERVER['HTTP_HOST'] . '/');
-define('WP_TEMP_DIR', '/opt/bitnami/apps/wordpress/tmp');
-if ( !defined( 'WP_CLI' ) ) {
-    // remove x-pingback HTTP header
-    add_filter('wp_headers', function($headers) {
-        unset($headers['X-Pingback']);
-        return $headers;
-    });
-    // disable pingbacks
-    add_filter( 'xmlrpc_methods', function( $methods ) {
-            unset( $methods['pingback.ping'] );
-            return $methods;
-    });
-    add_filter( 'auto_update_translation', '__return_false' );
-}
-
+define('AUTH_KEY',         '9bw<!-n%Qp!Qn{A$~_*z8JH1aw4]gH2&8,jue{ekuO*]}MV.~wKF{-#<M&3xczSp');
+define('SECURE_AUTH_KEY',  '^:(MNn-v6us7^QtB8Kx1`1]aSE]Qcn4|5 dl)5vYG=~lNn~nad4]~)|2OaLXA%L:');
+define('LOGGED_IN_KEY',    '%s,^I2aVZ=^O31R ztzrqirw&Tk:rtiIr~(JM(wHxZU!;Kvs-s*|K]2_KZs @c(^');
+define('NONCE_KEY',        'k=8-i=vlKpTT2EDs+sc9`cLOS6O)4`Kw3#*i?88Izr`|}6)Az}rz|fL1iGm]c-Ua');
+define('AUTH_SALT',        'Z[Li|yC4Ypr_gG4`]N&?s IVJC0oMF>x9?UeGU-SLjL]7z)34,W*0$0*Dy143:|?');
+define('SECURE_AUTH_SALT', 'KI@}cJr*{qPTOe2;|DzrphZ(M!G:b<-TjkIF32!}UhwtbsEhZ=H_PpS(zr=>qw(%');
+define('LOGGED_IN_SALT',   'kD@Fo>6UaA=z]ZaU,oEH-{1LW2H8D:Ws2M&Puk>=31cOki(|=ozy*MQXES6`W-{F');
+define('NONCE_SALT',       'E[LpYjUr3}Agj8K(-6se[zBLs})L/.XI(?m,4HN|pr{H,_xBY@X0Z>u/M&}32H!=');
 
 /**#@-*/
 
